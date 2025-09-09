@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BeaPlanner</title>
+<style>
+    /* --- Estilo Geral --- */
+    body {
+        background-color: #f5f3ee; /* fundo neutro */
+        font-family: "Georgia", serif; /* fonte rústica e discreta */
+        font-size: 13px; /* tamanho pequeno */
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .container {
+        display: flex; /* layout horizontal */
+        justify-content: space-around;
+        flex-wrap: wrap; /* para ajustar em telas menores */
+        padding: 20px;
+    }
+
+    .day {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        width: 120px;
+        min-height: 200px;
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.05);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .day h2 {
+        text-align: center;
+        margin: 0 0 10px 0;
+        font-size: 14px;
+    }
+
+    .task {
+        flex: 1;
+        margin-bottom: 5px;
+        padding: 5px;
+        background-color: #f9f9f9;
+        border-radius: 4px;
+        border: 1px solid #eee;
+        font-size: 12px;
+    }
+
+    .task input[type="text"] {
+        width: 100%;
+        border: none;
+        background: none;
+        font-family: inherit;
+        font-size: 12px;
+    }
+
+    .task input[type="text"]:focus {
+        outline: none;
+    }
+</style>
+</head>
+<body>
+
+<h1>BeaPlanner</h1>
+
+<div class="container">
+    <div class="day">
+        <h2>Segunda</h2>
+        <div class="task"><input type="text" placeholder="Tarefa 1"></div>
+        <div class="task"><input type="text" placeholder="Tarefa 2"></div>
+        <div class="task"><input type="text" placeholder="Tarefa 3"></div>
+    </div>
+    <div class="day">
+        <h2>Terça</h2>
+        <div class="task"><input type="text" placeholder="Tarefa 1"></div>
+        <div class="task"><input type="text" placeholder="Tarefa 2"></div>
+        <div class="task"><input type="text" placeholder="Tarefa 3"></div>
+    </div>
+    <div class="day">
+        <h2>Quarta</h2>
+        <div class="task"><input type="text" placeholder="Tarefa 1"></div>
+        <div class="task"><input type="text" placeholder="Tarefa 2"></div>
+        <div class="task"><input type="text" placeholder="Tarefa 3"></div>
+    </div>
+    <div class="day">
+        <h2>Quinta</h2>
+        <div class="task"><input type="text" placeholder="Tarefa 1"></div>
+        <div class="task"><input type="text" placeholder="Tarefa 2"></div>
+        <div class="task"><input type="text" placeholder="Tarefa 3"></div>
+    </div>
+    <div class="day">
+        <h2>Sexta</h2>
+        <div class="task"><input type="text" placeholder="Tarefa 1"></div>
+        <div class="task"><input type="text" placeholder="Tarefa 2"></div>
+        <div class="task"><input type="text" placeholder="Tarefa 3"></div>
+    </div>
+    <div class="day">
+        <h2>Sábado</h2>
+        <div class="task"><input type="text" placeholder="Tarefa 1"></div>
+        <div class="task"><input type="text" placeholder="Tarefa 2"></div>
+        <div class="task"><input type="text" placeholder="Tarefa 3"></div>
+    </div>
+    <div class="day">
+        <h2>Domingo</h2>
+        <div class="task"><input type="text" placeholder="Tarefa 1"></div>
+        <div class="task"><input type="text" placeholder="Tarefa 2"></div>
+        <div class="task"><input type="text" placeholder="Tarefa 3"></div>
+    </div>
+</div>
+
+</body>
+</html>
