@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BeaPlanner</title>
+  <style>
+    /* --- Estilo Geral --- */
+    body {
+      font-family: "Georgia", serif; /* fonte rústica */
+      font-size: 13px; /* pequena e discreta */
+      background-color: #f5f3ee; /* fundo neutro */
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate; /* para bordas arredondadas funcionarem */
+      border-spacing: 0 8px; /* espaço entre linhas */
+      table-layout: fixed;
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      text-align: center;
+      font-size: 13px;
+      color: #333;
+      border: none;
+    }
+
+    /* Estilo dos dias */
+    td {
+      min-height: 80px;
+      border-radius: 8px; /* cantos arredondados */
+      box-shadow: 1px 2px 5px rgba(0,0,0,0.05); /* sombra leve */
+    }
+
+    /* Cores suaves para cada dia */
+    td:nth-child(2) { background-color: #fdf5e6; } /* Segunda */
+    td:nth-child(3) { background-color: #f0f8ff; } /* Terça */
+    td:nth-child(4) { background-color: #f5f5dc; } /* Quarta */
+    td:nth-child(5) { background-color: #fffaf0; } /* Quinta */
+    td:nth-child(6) { background-color: #f0fff0; } /* Sexta */
+    td:nth-child(7) { background-color: #fff0f5; } /* Sábado */
+    td:nth-child(8) { background-color: #f5fffa; } /* Domingo */
+
+    textarea {
+      width: 100%;
+      border: none;
+      resize: none;
+      font-size: 12px;
+      background: transparent;
+      font-family: "Georgia", serif;
+    }
+
+    textarea:focus {
+      outline: none;
+    }
+
+    /* Cabeçalho horizontal com fundo suave */
+    th:nth-child(2) { background-color: #fdf5e6; border-radius: 8px 0 0 0; }
+    th:nth-child(8) { background-color: #f5fffa; border-radius: 0 8px 0 0; }
+    th:not(:nth-child(2)):not(:nth-child(8)) { background-color: #fff; }
+
+    /* Botão limpar */
+    #clearBtn {
+      display: block;
+      margin: 20px auto;
+      padding: 8px 16px;
+      background: #d9534f;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: "Georgia", serif;
+    }
+
+    #clearBtn:hover {
+      background: #c9302c;
+    }
+  </style>
+</head>
+<body>
+  <h1>BeaPlanner ✨</h1>
+  <table>
+    <tr>
+      <th>Horário</th>
+      <th>Segunda</th>
+      <th>Terça</th>
+      <th>Quarta</th>
+      <th>Quinta</th>
+      <th>Sexta</th>
+      <th>Sábado</th>
+      <th>Domingo</th>
+    </tr>
+    <tr>
+      <td>08h - 10h</td>
+      <td><textarea placeholder="Tarefas..."></textarea></td>
+      <td><textarea></textarea></td>
+      <td><textarea></textarea></td>
+      <td><textarea></textarea></td>
+      <td><textarea></textarea></td>
+      <td><textarea></textarea></td>
+      <td><textarea></textarea></td>
+    </tr>
+    <tr>
+      <td>10h - 12h</td>
+      <td><textarea></textarea></td>
+      <td><textarea></textarea></td>
+      <td><textarea></textarea></td>
+      <td><textarea></textarea></td>
+      <td><textarea></textarea></td>
+      <td><textarea></textarea></td>
+      <td><textarea></textarea></td>
+    </tr>
+    <tr>
+      <td>14h - 16h</td>
+      <td><textarea></textarea></td>
+      <td><textarea></textarea></td>
+      <td><textarea></textarea></td>
+      <td><textarea></textarea></td>
+      <td><textarea></textarea></td>
+      <td><textarea></textarea></td>
+      <td><textarea></textarea></td>
+    </tr>
+    <tr>
+      <td>16h - 18h</td>
+      <td><textarea></textarea></td>
+      <td><textarea></textarea></td>
+      <td><textarea></textarea></td>
+      <td><textarea></textarea></td>
+      <td><textarea></textarea></td>
+      <td><textarea></textarea></td>
+      <td><textarea></textarea></td>
+    </tr>
+  </table>
+
+  <button id="clearBtn">🗑 Limpar Tudo</button>
+
+  <script>
+    const textareas = document.querySelectorAll("textarea");
+
+    // Carregar dados salvos
+    textareas.forEach((area, index) => {
+      const saved = localStorage.getItem("planner-" + index);
+      if (saved) area.value = saved;
+
+      // Salvar ao digitar
+      area.addEventListener("input", () => {
+        localStorage.setItem("planner-" + index, area.value);
+      });
+    });
+
+    // Botão limpar
+    document.getElementById("clearBtn").addEventListener("click", () => {
+      if (confirm("Tem certeza que deseja apagar todas as anotações?")) {
+        textareas.forEach((area, index) => {
+          area.value = "";
+          localStorage.removeItem("planner-" + index);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
